@@ -28,30 +28,37 @@ Everything is designed with Infrastructure as Code (IaC) principles — meaning 
 📂 Project Structure
 aws-terraform-fsa-1
 ```
-│
-├── main.tf                # Main configuration calling modules
-├── variables.tf           # Centralized input variables
-├── outputs.tf             # Output values for easy access
-├── providers.tf           # AWS provider configuration
-├── terraform.tfvars       # Variable values (not committed)
-│
+aws-project-terraform/
+├── README.md
+├── terraform.tfvars
+├── backend.tf
+├── provider.tf
+├── variables.tf
+├── outputs.tf
+├── main.tf
 ├── modules/
 │   ├── vpc/
 │   │   ├── main.tf
 │   │   ├── variables.tf
-│   │   ├── outputs.tf
-│   │
-│   ├── ec2/
+│   │   └── outputs.tf
+│   ├── compute/
 │   │   ├── main.tf
 │   │   ├── variables.tf
 │   │   ├── outputs.tf
-│   │
-│   └── security/
+│   │   └── userdata/
+│   │       ├── app_userdata.tpl
+│   │       └── jump_userdata.sh
+│   ├── alb/
+│   │   ├── main.tf
+│   │   ├── variables.tf
+│   │   └── outputs.tf
+│   └── rds/
 │       ├── main.tf
 │       ├── variables.tf
-│       ├── outputs.tf
-│
-└── .gitignore
+│       └── outputs.tf
+└── scripts/
+    └── generate_key.sh
+
 ```
 
 Why This Matters
